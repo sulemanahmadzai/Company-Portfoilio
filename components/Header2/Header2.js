@@ -92,6 +92,15 @@ const Header2 = (props) => {
                       <Link
                         onClick={ClickHandler}
                         className="nav-link"
+                        href="/projects"
+                      >
+                        Projects
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        onClick={ClickHandler}
+                        className="nav-link"
                         href="/team"
                       >
                         Team

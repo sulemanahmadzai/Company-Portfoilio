@@ -21,11 +21,16 @@ const menus = [
   },
   {
     id: 4,
+    title: "Projects",
+    link: "/projects",
+  },
+  {
+    id: 5,
     title: "Team",
     link: "/team",
   },
   {
-    id: 5,
+    id: 6,
     title: "Contact",
     link: "/contact",
   },

@@ -141,35 +141,49 @@ const About = (props) => {
                 backgroundImage: `url(${"/images/shapes/shape_title_under_line.svg"})`,
               }}
             >
-              Case Studies
+              Our Projects
             </div>
             <h2 className="heading_text mb-0">
-              Our latest <mark>Case</mark> Studies
+              Our Latest <mark>Projects</mark>
             </h2>
           </div>
 
           <div className="case_studies_wrapper">
-            {Project.slice(6, 9).map((project, prj) => (
+            {Project.slice(6, 10).map((project, prj) => (
               <div className="case_study_block" key={prj}>
                 <div className="case_study_image">
-                  <Image src={project.pImg} alt="Techco - Cases" />
+                  <Image
+                    src={project.pImg}
+                    alt={`${project.title} - Project`}
+                  />
                 </div>
                 <div className="case_study_content">
                   <ul className="category_list unordered_list text-uppercase">
                     <li>
-                      <a href="portfolio.html">{project.sub}</a>
+                      <span className="badge bg-primary">{project.sub}</span>
                     </li>
                   </ul>
                   <h3 className="case_title">
-                    <Link
-                      onClick={ClickHandler}
-                      href={"/portfolio_details/[slug]"}
-                      as={`/portfolio_details/${project.slug}`}
-                    >
-                      {project.title}
-                    </Link>
+                    {project.website ? (
+                      <a
+                        href={project.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: "inherit" }}
+                      >
+                        {project.title}
+                      </a>
+                    ) : (
+                      <span>{project.title}</span>
+                    )}
                   </h3>
                   <p>{project.description}</p>
+                  {project.impact && (
+                    <p className="mb-3">
+                      <strong className="text-success">Impact:</strong>{" "}
+                      {project.impact}
+                    </p>
+                  )}
                   <ul className="icon_list unordered_list">
                     <li>
                       <span className="icon_list_text">
@@ -184,48 +198,45 @@ const About = (props) => {
                       </span>
                     </li>
                   </ul>
-                  <ul
-                    className="case_technologies unordered_list"
-                    data-text="Core Technologies:"
-                  >
-                    <li>
-                      <Image src={project.Technologies1} alt="Angular" />
-                    </li>
-                    <li>
-                      <Image src={project.Technologies2} alt="Elephent" />
-                    </li>
-                  </ul>
-                  <Link
-                    onClick={ClickHandler}
-                    href={"/portfolio_details/[slug]"}
-                    as={`/portfolio_details/${project.slug}`}
-                    className="btn btn-primary"
-                  >
-                    <span className="btn_label" data-text="Read Case">
-                      Read Case
-                    </span>
-                    <span className="btn_icon">
-                      <i className="fa-solid fa-arrow-up-right"></i>
-                    </span>
-                  </Link>
+                  {project.techStack && (
+                    <div className="mb-3">
+                      <strong className="text-dark">Tech Stack:</strong>
+                      <p className="mb-0 mt-1 text-muted small">
+                        {project.techStack}
+                      </p>
+                    </div>
+                  )}
+                  {project.Technologies1 && project.Technologies2 && (
+                    <ul
+                      className="case_technologies unordered_list"
+                      data-text="Core Technologies:"
+                    >
+                      <li>
+                        <Image src={project.Technologies1} alt="Technology 1" />
+                      </li>
+                      <li>
+                        <Image src={project.Technologies2} alt="Technology 2" />
+                      </li>
+                    </ul>
+                  )}
+                  {project.website && (
+                    <a
+                      href={project.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary"
+                    >
+                      <span className="btn_label" data-text="View Project">
+                        View Project
+                      </span>
+                      <span className="btn_icon">
+                        <i className="fa-solid fa-arrow-up-right"></i>
+                      </span>
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
-          </div>
-
-          <div className="btns_group pb-0">
-            <Link
-              onClick={ClickHandler}
-              href="/portfolio"
-              className="btn btn-primary"
-            >
-              <span className="btn_label" data-text="View More Cases Study">
-                View More Cases Study
-              </span>
-              <span className="btn_icon">
-                <i className="fa-solid fa-arrow-up-right"></i>
-              </span>
-            </Link>
           </div>
         </div>
       </div>
